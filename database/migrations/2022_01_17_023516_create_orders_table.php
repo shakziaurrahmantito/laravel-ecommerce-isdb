@@ -13,10 +13,13 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        customers
+
         Schema::create('orders', function (Blueprint $table) {
             $table->id('orders_id');
-            $table->string('orders_customer_id')->nullable();
-            $table->string('orders_product_id')->nullable();
+            $table->string('')->nullable();
+            $table->foreignId("orders_customer_id")->constrained("customers")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
+            $table->foreignId("orders_product_id")->constrained("products")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
             $table->string('orders_product_name')->nullable();
             $table->string('orders_product_image')->nullable();
             $table->string('orders_product_qty')->nullable();

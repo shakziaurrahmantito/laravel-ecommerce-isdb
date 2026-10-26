@@ -13,9 +13,10 @@ class CreateCartsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('carts', function (Blueprint $table) {
             $table->id('cart_id');
-            $table->string('cart_product_id')->nullable();
+            $table->foreignId('cart_product_id')->constrained("products")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
             $table->string('cart_product_name')->nullable();
             $table->string('cart_product_image')->nullable();
             $table->string('cart_product_price')->nullable();

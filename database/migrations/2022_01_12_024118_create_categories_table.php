@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id('category_id');
             $table->string('category_name')->nullable();
-            $table->string('brand_id')->nullable();
+            $table->foreignId("brand_id")->constrained("brands")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
             $table->timestamps();
         });
     }
