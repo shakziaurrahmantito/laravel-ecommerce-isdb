@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('product_sort_des')->nullable();
             $table->string('product_regular_price')->nullable();
             $table->string('product_price')->nullable();
-            $table->foreignId('product_brand_id')->constrained("brands")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
-            $table->foreignId('product_category_id')->constrained("categories")->caseCadeOnUpdate()->caseCadeOnDelete()->index();
+            $table->foreignId('product_brand_id')->constrained("brands", "brand_id")->caseCadeOnUpdate()->caseCadeOnDelete();
+            $table->foreignId('product_category_id')->constrained("categories", "category_id")->caseCadeOnUpdate()->caseCadeOnDelete();
             $table->string('product_image')->nullable();
             $table->text('product_description')->nullable();
             $table->timestamps();
